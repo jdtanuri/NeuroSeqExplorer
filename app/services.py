@@ -1,3 +1,32 @@
+CODIGO_GENETICO = {
+    "UUU": "F", "UUC": "F",
+    "UUA": "L", "UUG": "L",
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+    "UAU": "Y", "UAC": "Y",
+    "UAA": "*", "UAG": "*",
+    "UGU": "C", "UGC": "C",
+    "UGA": "*",
+    "UGG": "W",
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+    "CAU": "H", "CAC": "H",
+    "CAA": "Q", "CAG": "Q",
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+    "AUU": "I", "AUC": "I", "AUA": "I",
+    "AUG": "M",
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+    "AAU": "N", "AAC": "N",
+    "AAA": "K", "AAG": "K",
+    "AGU": "S", "AGC": "S",
+    "AGA": "R", "AGG": "R",
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+    "GAU": "D", "GAC": "D",
+    "GAA": "E", "GAG": "E",
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"
+}
+
+
 def contar_bases(sequencia):
     return {
         "A": sequencia.count("A"),
@@ -35,53 +64,11 @@ def transcrever_rna(sequencia):
 
 
 def traduzir_proteina(rna):
-    codigo_genetico = {
-        "UUU": "F", "UUC": "F",
-        "UUA": "L", "UUG": "L",
-
-        "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
-
-        "UAU": "Y", "UAC": "Y",
-        "UAA": "*", "UAG": "*",
-
-        "UGU": "C", "UGC": "C",
-        "UGA": "*",
-        "UGG": "W",
-
-        "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
-
-        "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
-
-        "CAU": "H", "CAC": "H",
-        "CAA": "Q", "CAG": "Q",
-
-        "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
-
-        "AUU": "I", "AUC": "I", "AUA": "I",
-        "AUG": "M",
-
-        "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
-
-        "AAU": "N", "AAC": "N",
-        "AAA": "K", "AAG": "K",
-
-        "AGU": "S", "AGC": "S",
-        "AGA": "R", "AGG": "R",
-
-        "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
-
-        "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
-
-        "GAU": "D", "GAC": "D",
-        "GAA": "E", "GAG": "E",
-
-        "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"
-    }
-
     proteina = ""
     traduzindo = False
 
     for i in range(0, len(rna), 3):
+
         codon = rna[i:i+3]
 
         if len(codon) < 3:
@@ -96,6 +83,39 @@ def traduzir_proteina(rna):
         if codon in ["UAA", "UAG", "UGA"]:
             break
 
-        proteina += codigo_genetico[codon]
+        proteina += CODIGO_GENETICO[codon]
 
     return proteina
+
+
+def analisar_sequencia(sequencia):
+
+    contagem = contar_bases(sequencia)
+    gc = calcular_gc(sequencia)
+    complementar = fita_complementar(sequencia)
+    rna = transcrever_rna(sequencia)
+    proteina = traduzir_proteina(rna)
+
+    return {
+        "gc": gc,
+        "fita_complementar": complementar,
+        "rna": rna,
+        "proteina": proteina,
+        **contagem
+    }
+
+
+def ler_fasta(caminho):
+
+    sequencia = ""
+
+    with open(caminho) as arquivo:
+
+        for linha in arquivo:
+
+            if linha.startswith(">"):
+                continue
+
+            sequencia += linha.strip()
+
+    return sequencia
