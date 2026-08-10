@@ -105,17 +105,16 @@ def analisar_sequencia(sequencia):
     }
 
 
-def ler_fasta(caminho):
-
+def ler_fasta(arquivo):
     sequencia = ""
 
-    with open(caminho) as arquivo:
+    for linha in arquivo.file:
 
-        for linha in arquivo:
+        linha = linha.decode("utf-8")
 
-            if linha.startswith(">"):
-                continue
+        if linha.startswith(">"):
+            continue
 
-            sequencia += linha.strip()
+        sequencia += linha.strip()
 
     return sequencia

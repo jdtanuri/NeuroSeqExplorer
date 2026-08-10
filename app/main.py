@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 
 from app.services import (
@@ -43,9 +43,9 @@ def analisar(dados: Sequencia):
     }
 
 
-@app.get("/analisar-fasta")
-def analisar_fasta():
+@app.post("/analisar-fasta")
+def analisar_fasta(arquivo: UploadFile = File(...)):
 
-    sequencia = ler_fasta("sequencias/teste.fasta")
+    sequencia = ler_fasta(arquivo)
 
     return analisar_sequencia(sequencia)
