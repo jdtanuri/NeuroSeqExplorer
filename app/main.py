@@ -1,12 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 
 from app.services import (
-    contar_bases,
-    calcular_gc,
-    fita_complementar,
-    transcrever_rna,
-    traduzir_proteina
+    analisar_sequencia,
+    ler_fasta
 )
 
 app = FastAPI()
@@ -29,6 +26,7 @@ def ola(nome):
 
 @app.post("/analisar")
 def analisar(dados: Sequencia):
+
     sequencia = dados.sequencia.upper()
 
     for letra in sequencia:
@@ -37,17 +35,17 @@ def analisar(dados: Sequencia):
                 "erro": "Sequência contém caractere inválido."
             }
 
-    contagem = contar_bases(sequencia)
-    gc = calcular_gc(sequencia)
-    complementar = fita_complementar(sequencia)
-    rna = transcrever_rna(sequencia)
-    proteina = traduzir_proteina(rna)
+    resultado = analisar_sequencia(sequencia)
 
     return {
         "nome": dados.nome,
-        "gc": gc,
-        "fita_complementar": complementar,
-        "rna": rna,
-        "proteina": proteina,
-        **contagem
+        **resultado
     }
+
+
+@app.post("/analisar-fasta")
+def analisar_fasta(arquivo: UploadFile = File(...)):
+
+    sequencia = ler_fasta(arquivo)
+
+    return analisar_sequencia(sequencia)
