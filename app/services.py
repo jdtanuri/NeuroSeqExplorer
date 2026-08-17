@@ -1,30 +1,5 @@
-CODIGO_GENETICO = {
-    "UUU": "F", "UUC": "F",
-    "UUA": "L", "UUG": "L",
-    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
-    "UAU": "Y", "UAC": "Y",
-    "UAA": "*", "UAG": "*",
-    "UGU": "C", "UGC": "C",
-    "UGA": "*",
-    "UGG": "W",
-    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
-    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
-    "CAU": "H", "CAC": "H",
-    "CAA": "Q", "CAG": "Q",
-    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
-    "AUU": "I", "AUC": "I", "AUA": "I",
-    "AUG": "M",
-    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
-    "AAU": "N", "AAC": "N",
-    "AAA": "K", "AAG": "K",
-    "AGU": "S", "AGC": "S",
-    "AGA": "R", "AGG": "R",
-    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
-    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
-    "GAU": "D", "GAC": "D",
-    "GAA": "E", "GAG": "E",
-    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"
-}
+from Bio.Seq import Seq
+from Bio import SeqIO
 
 
 def contar_bases(sequencia):
@@ -44,48 +19,59 @@ def calcular_gc(sequencia):
 
 
 def fita_complementar(sequencia):
-    complemento = {
-        "A": "T",
-        "T": "A",
-        "C": "G",
-        "G": "C"
-    }
-
-    fita = ""
-
-    for letra in sequencia:
-        fita += complemento[letra]
-
-    return fita
+    return str(Seq(sequencia).complement())
 
 
 def transcrever_rna(sequencia):
-    return sequencia.replace("T", "U")
+    return str(Seq(sequencia).transcribe())
 
 
 def traduzir_proteina(rna):
-    proteina = ""
-    traduzindo = False
+    return str(Seq(rna).translate(to_stop=True))
 
-    for i in range(0, len(rna), 3):
 
-        codon = rna[i:i+3]
+def encontrar_orfs_em_fita(sequencia):
+    orfs = []
 
-        if len(codon) < 3:
-            break
+    for frame in range(3):
 
-        if codon == "AUG":
-            traduzindo = True
+        trecho = sequencia[frame:]
 
-        if not traduzindo:
+        rna = str(Seq(trecho).transcribe())
+
+        inicio = -1
+
+        for i in range(0, len(rna), 3):
+            if rna[i:i+3] == "AUG":
+                inicio = i
+                break
+
+        if inicio == -1:
             continue
 
-        if codon in ["UAA", "UAG", "UGA"]:
-            break
+        rna_orf = rna[inicio:]
 
-        proteina += CODIGO_GENETICO[codon]
+        proteina = str(Seq(rna_orf).translate(to_stop=True))
 
-    return proteina
+        if proteina:
+            orfs.append({
+                "frame": frame + 1,
+                "proteina": proteina
+            })
+
+    return orfs
+
+
+def encontrar_orfs(sequencia):
+    orfs = []
+
+    orfs.extend(encontrar_orfs_em_fita(sequencia))
+
+    reversa = str(Seq(sequencia).reverse_complement())
+
+    orfs.extend(encontrar_orfs_em_fita(reversa))
+
+    return orfs
 
 
 def analisar_sequencia(sequencia):
@@ -106,15 +92,6 @@ def analisar_sequencia(sequencia):
 
 
 def ler_fasta(arquivo):
-    sequencia = ""
+    registro = SeqIO.read(arquivo.file, "fasta")
 
-    for linha in arquivo.file:
-
-        linha = linha.decode("utf-8")
-
-        if linha.startswith(">"):
-            continue
-
-        sequencia += linha.strip()
-
-    return sequencia
+    return str(registro.seq)
