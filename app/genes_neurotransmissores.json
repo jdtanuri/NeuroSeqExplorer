@@ -1,0 +1,101 @@
+{
+  "dopamina": [
+    { "gene": "TH", "nome_completo": "Tirosina Hidroxilase", "descricao": "Enzima responsável pela etapa limitante da síntese de dopamina, convertendo tirosina em L-DOPA." },
+    { "gene": "DDC", "nome_completo": "DOPA Descarboxilase", "descricao": "Converte L-DOPA em dopamina; também atua na via da serotonina." },
+    { "gene": "SLC18A2", "nome_completo": "Transportador Vesicular de Monoaminas 2 (VMAT2)", "descricao": "Transporta dopamina (e outras monoaminas) para dentro de vesículas sinápticas antes da liberação." },
+    { "gene": "SLC6A3", "nome_completo": "Transportador de Dopamina (DAT)", "descricao": "Responsável pela recaptação de dopamina da fenda sináptica de volta ao neurônio pré-sináptico." },
+    { "gene": "DRD1", "nome_completo": "Receptor de Dopamina D1", "descricao": "Receptor acoplado à proteína G que ativa vias excitatórias na sinalização dopaminérgica." },
+    { "gene": "DRD2", "nome_completo": "Receptor de Dopamina D2", "descricao": "Receptor associado à proteína G expresso em neurônios pós-sinápticos; alvo de antipsicóticos." },
+    { "gene": "DRD3", "nome_completo": "Receptor de Dopamina D3", "descricao": "Receptor expresso predominantemente em regiões límbicas, associado a recompensa e motivação." },
+    { "gene": "DRD4", "nome_completo": "Receptor de Dopamina D4", "descricao": "Receptor associado a comportamentos de busca por novidade e atenção." },
+    { "gene": "DRD5", "nome_completo": "Receptor de Dopamina D5", "descricao": "Receptor da mesma família farmacológica do D1, com distribuição expressa mais restrita." },
+    { "gene": "COMT", "nome_completo": "Catecol-O-Metiltransferase", "descricao": "Enzima que degrada dopamina e outras catecolaminas, regulando sua disponibilidade sináptica." },
+    { "gene": "MAOA", "nome_completo": "Monoamina Oxidase A", "descricao": "Enzima que degrada dopamina, serotonina e noradrenalina no interior do neurônio." },
+    { "gene": "MAOB", "nome_completo": "Monoamina Oxidase B", "descricao": "Enzima que degrada dopamina preferencialmente; alvo de fármacos usados na doença de Parkinson." }
+  ],
+  "serotonina": [
+    { "gene": "TPH1", "nome_completo": "Triptofano Hidroxilase 1", "descricao": "Enzima que sintetiza serotonina predominantemente em tecidos periféricos." },
+    { "gene": "TPH2", "nome_completo": "Triptofano Hidroxilase 2", "descricao": "Enzima responsável pela etapa limitante da síntese de serotonina no sistema nervoso central." },
+    { "gene": "DDC", "nome_completo": "DOPA Descarboxilase", "descricao": "Converte 5-HTP em serotonina; também atua na via da dopamina." },
+    { "gene": "SLC18A2", "nome_completo": "Transportador Vesicular de Monoaminas 2 (VMAT2)", "descricao": "Transporta serotonina para dentro de vesículas sinápticas antes da liberação." },
+    { "gene": "SLC6A4", "nome_completo": "Transportador de Serotonina (SERT)", "descricao": "Responsável pela recaptação de serotonina na fenda sináptica; alvo dos antidepressivos ISRS." },
+    { "gene": "HTR1A", "nome_completo": "Receptor de Serotonina 1A", "descricao": "Receptor inibitório associado à regulação do humor e ansiedade." },
+    { "gene": "HTR1B", "nome_completo": "Receptor de Serotonina 1B", "descricao": "Autorreceptor envolvido na regulação da liberação de serotonina." },
+    { "gene": "HTR2A", "nome_completo": "Receptor de Serotonina 2A", "descricao": "Receptor associado à percepção, humor e alvo de antipsicóticos e alucinógenos." },
+    { "gene": "HTR2C", "nome_completo": "Receptor de Serotonina 2C", "descricao": "Receptor envolvido na regulação de apetite e humor." },
+    { "gene": "HTR3A", "nome_completo": "Receptor de Serotonina 3A", "descricao": "Único receptor de serotonina do tipo canal iônico; associado a náusea e vômito." },
+    { "gene": "MAOA", "nome_completo": "Monoamina Oxidase A", "descricao": "Enzima que degrada serotonina, dopamina e noradrenalina." }
+  ],
+  "gaba": [
+    { "gene": "GAD1", "nome_completo": "Glutamato Descarboxilase 1", "descricao": "Codifica a isoforma GAD67, responsável pela maior parte da síntese de GABA no cérebro." },
+    { "gene": "GAD2", "nome_completo": "Glutamato Descarboxilase 2", "descricao": "Codifica a isoforma GAD65, associada à liberação regulada de GABA em terminais sinápticos." },
+    { "gene": "ABAT", "nome_completo": "GABA Transaminase", "descricao": "Enzima responsável pela degradação de GABA." },
+    { "gene": "ALDH5A1", "nome_completo": "Succinato-Semialdeído Desidrogenase", "descricao": "Atua na via de degradação do GABA, subsequente à ação da GABA transaminase." },
+    { "gene": "SLC6A1", "nome_completo": "Transportador de GABA 1 (GAT1)", "descricao": "Responsável pela recaptação de GABA da fenda sináptica." },
+    { "gene": "GABRA1", "nome_completo": "Subunidade Alfa-1 do Receptor GABA-A", "descricao": "Componente do receptor GABA-A, canal iônico ativado por GABA; alvo de benzodiazepínicos." },
+    { "gene": "GABRB2", "nome_completo": "Subunidade Beta-2 do Receptor GABA-A", "descricao": "Subunidade que compõe o receptor GABA-A, essencial para sua montagem funcional." },
+    { "gene": "GABRG2", "nome_completo": "Subunidade Gama-2 do Receptor GABA-A", "descricao": "Subunidade necessária para a modulação do receptor GABA-A por benzodiazepínicos." },
+    { "gene": "GPHN", "nome_completo": "Gefirina", "descricao": "Proteína de ancoragem que organiza receptores de GABA e glicina na membrana pós-sináptica." }
+  ],
+  "glutamato": [
+    { "gene": "GRIN1", "nome_completo": "Subunidade GluN1 do Receptor NMDA", "descricao": "Componente essencial dos receptores NMDA, associado a plasticidade sináptica e memória." },
+    { "gene": "GRIN2A", "nome_completo": "Subunidade GluN2A do Receptor NMDA", "descricao": "Subunidade que modula as propriedades funcionais do receptor NMDA." },
+    { "gene": "GRIN2B", "nome_completo": "Subunidade GluN2B do Receptor NMDA", "descricao": "Subunidade associada ao desenvolvimento sináptico e a processos de aprendizagem." },
+    { "gene": "GRIA1", "nome_completo": "Subunidade GluA1 do Receptor AMPA", "descricao": "Componente dos receptores AMPA, responsáveis pela transmissão glutamatérgica rápida." },
+    { "gene": "GRIA2", "nome_completo": "Subunidade GluA2 do Receptor AMPA", "descricao": "Subunidade que regula a permeabilidade a cálcio dos receptores AMPA." },
+    { "gene": "GRM1", "nome_completo": "Receptor Metabotrópico de Glutamato 1", "descricao": "Receptor acoplado à proteína G que modula a sinalização glutamatérgica de forma mais lenta." },
+    { "gene": "GRM5", "nome_completo": "Receptor Metabotrópico de Glutamato 5", "descricao": "Receptor associado à plasticidade sináptica e implicado em transtornos do neurodesenvolvimento." },
+    { "gene": "SLC17A6", "nome_completo": "Transportador Vesicular de Glutamato 2 (VGLUT2)", "descricao": "Transporta glutamato para dentro de vesículas sinápticas antes da liberação." },
+    { "gene": "SLC1A2", "nome_completo": "Transportador de Glutamato Astrocitário (EAAT2)", "descricao": "Principal responsável pela recaptação de glutamato da fenda sináptica, evitando excitotoxicidade." },
+    { "gene": "GLS", "nome_completo": "Glutaminase", "descricao": "Enzima que converte glutamina em glutamato, etapa chave da síntese desse neurotransmissor." }
+  ],
+  "acetilcolina": [
+    { "gene": "CHAT", "nome_completo": "Colina Acetiltransferase", "descricao": "Enzima responsável pela síntese de acetilcolina a partir de colina e acetil-CoA." },
+    { "gene": "ACHE", "nome_completo": "Acetilcolinesterase", "descricao": "Enzima que degrada acetilcolina na fenda sináptica, encerrando sua ação." },
+    { "gene": "BCHE", "nome_completo": "Butirilcolinesterase", "descricao": "Enzima que também hidrolisa acetilcolina, com papel complementar à acetilcolinesterase." },
+    { "gene": "SLC18A3", "nome_completo": "Transportador Vesicular de Acetilcolina (VAChT)", "descricao": "Transporta acetilcolina para dentro de vesículas sinápticas antes da liberação." },
+    { "gene": "SLC5A7", "nome_completo": "Transportador de Colina de Alta Afinidade (CHT1)", "descricao": "Capta colina do meio extracelular para a síntese de nova acetilcolina." },
+    { "gene": "CHRM1", "nome_completo": "Receptor Muscarínico M1", "descricao": "Receptor colinérgico metabotrópico associado a funções cognitivas." },
+    { "gene": "CHRM2", "nome_completo": "Receptor Muscarínico M2", "descricao": "Receptor colinérgico com papel regulatório destacado no sistema cardíaco e no SNC." },
+    { "gene": "CHRNA4", "nome_completo": "Subunidade Alfa-4 do Receptor Nicotínico", "descricao": "Componente de receptores nicotínicos ionotrópicos, alvo da nicotina." },
+    { "gene": "CHRNA7", "nome_completo": "Subunidade Alfa-7 do Receptor Nicotínico", "descricao": "Subunidade associada a processos de atenção e implicada em pesquisas sobre esquizofrenia." },
+    { "gene": "CHRNB2", "nome_completo": "Subunidade Beta-2 do Receptor Nicotínico", "descricao": "Subunidade que compõe receptores nicotínicos de alta afinidade no cérebro." }
+  ],
+  "noradrenalina": [
+    { "gene": "TH", "nome_completo": "Tirosina Hidroxilase", "descricao": "Enzima que inicia a síntese de catecolaminas, incluindo a via da noradrenalina." },
+    { "gene": "DBH", "nome_completo": "Dopamina Beta-Hidroxilase", "descricao": "Enzima que converte dopamina em noradrenalina." },
+    { "gene": "PNMT", "nome_completo": "Feniletanolamina N-Metiltransferase", "descricao": "Enzima que converte noradrenalina em adrenalina." },
+    { "gene": "SLC6A2", "nome_completo": "Transportador de Noradrenalina (NET)", "descricao": "Responsável pela recaptação de noradrenalina na fenda sináptica." },
+    { "gene": "ADRA1A", "nome_completo": "Receptor Adrenérgico Alfa-1A", "descricao": "Receptor associado a efeitos excitatórios da noradrenalina no sistema nervoso central e periférico." },
+    { "gene": "ADRA2A", "nome_completo": "Receptor Adrenérgico Alfa-2A", "descricao": "Autorreceptor que regula a liberação de noradrenalina por retroalimentação negativa." },
+    { "gene": "ADRB1", "nome_completo": "Receptor Adrenérgico Beta-1", "descricao": "Receptor associado principalmente a efeitos cardiovasculares da noradrenalina." },
+    { "gene": "ADRB2", "nome_completo": "Receptor Adrenérgico Beta-2", "descricao": "Receptor amplamente distribuído, associado a efeitos metabólicos e respiratórios." },
+    { "gene": "COMT", "nome_completo": "Catecol-O-Metiltransferase", "descricao": "Enzima que degrada noradrenalina e outras catecolaminas." },
+    { "gene": "MAOA", "nome_completo": "Monoamina Oxidase A", "descricao": "Enzima que degrada noradrenalina, dopamina e serotonina." }
+  ],
+  "histamina": [
+    { "gene": "HDC", "nome_completo": "Histidina Descarboxilase", "descricao": "Enzima responsável pela síntese de histamina a partir de histidina." },
+    { "gene": "HNMT", "nome_completo": "Histamina N-Metiltransferase", "descricao": "Principal enzima de degradação da histamina no sistema nervoso central." },
+    { "gene": "SLC18A2", "nome_completo": "Transportador Vesicular de Monoaminas 2 (VMAT2)", "descricao": "Também participa do transporte de histamina para vesículas sinápticas." },
+    { "gene": "HRH1", "nome_completo": "Receptor de Histamina H1", "descricao": "Receptor associado à vigília e a reações alérgicas; alvo de anti-histamínicos clássicos." },
+    { "gene": "HRH2", "nome_completo": "Receptor de Histamina H2", "descricao": "Receptor associado à secreção gástrica; também presente no sistema nervoso central." },
+    { "gene": "HRH3", "nome_completo": "Receptor de Histamina H3", "descricao": "Autorreceptor que regula a liberação de histamina e de outros neurotransmissores no SNC." },
+    { "gene": "HRH4", "nome_completo": "Receptor de Histamina H4", "descricao": "Receptor associado principalmente a processos imunológicos e inflamatórios." }
+  ],
+  "glicina": [
+    { "gene": "GLRA1", "nome_completo": "Subunidade Alfa-1 do Receptor de Glicina", "descricao": "Componente do receptor de glicina, canal iônico inibitório da medula espinhal e tronco encefálico." },
+    { "gene": "GLRB", "nome_completo": "Subunidade Beta do Receptor de Glicina", "descricao": "Subunidade estrutural necessária para a ancoragem do receptor de glicina na membrana." },
+    { "gene": "SLC6A9", "nome_completo": "Transportador de Glicina 1 (GlyT1)", "descricao": "Responsável pela recaptação de glicina, regulando sua disponibilidade sináptica." },
+    { "gene": "SLC6A5", "nome_completo": "Transportador de Glicina 2 (GlyT2)", "descricao": "Transportador presynaptic que recicla glicina para reuso na neurotransmissão inibitória." },
+    { "gene": "GPHN", "nome_completo": "Gefirina", "descricao": "Proteína de ancoragem que organiza receptores de glicina e GABA na membrana pós-sináptica." }
+  ],
+  "opioides": [
+    { "gene": "POMC", "nome_completo": "Pró-Opiomelanocortina", "descricao": "Precursor de peptídeos opioides endógenos, incluindo a beta-endorfina." },
+    { "gene": "PENK", "nome_completo": "Proencefalina", "descricao": "Precursor de encefalinas, peptídeos opioides endógenos envolvidos na modulação da dor." },
+    { "gene": "PDYN", "nome_completo": "Prodinorfina", "descricao": "Precursor de dinorfinas, peptídeos opioides que atuam principalmente em receptores kappa." },
+    { "gene": "OPRM1", "nome_completo": "Receptor Opioide Mu", "descricao": "Principal alvo da morfina e de outros opioides analgésicos e de abuso." },
+    { "gene": "OPRD1", "nome_completo": "Receptor Opioide Delta", "descricao": "Receptor opioide associado à modulação do humor e da analgesia." },
+    { "gene": "OPRK1", "nome_completo": "Receptor Opioide Kappa", "descricao": "Receptor associado a efeitos analgésicos e disfóricos dos opioides." },
+    { "gene": "PCSK1", "nome_completo": "Pró-Proteína Convertase 1", "descricao": "Enzima envolvida no processamento da pró-opiomelanocortina em peptídeos ativos." }
+  ]
+}
