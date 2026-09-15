@@ -2,6 +2,7 @@ import os
 import json
 import sqlite3
 import time
+import re
 import warnings
 from pathlib import Path
 from datetime import datetime
@@ -205,39 +206,65 @@ def buscar_info_gene(nome_gene):
 
 
 def buscar_artigos_recentes(nome_gene, quantidade=5):
-    termo_busca = f"{nome_gene}[Gene Name] AND Homo sapiens[Organism]"
-
     try:
-        resultado_busca = Entrez.esearch(
-            db="pubmed",
-            term=termo_busca,
-            retmax=quantidade
+        busca_gene = Entrez.esearch(
+            db="gene",
+            term=f"{nome_gene}[sym] AND Homo sapiens[orgn]",
+            retmax=1
         )
-        dados_busca = Entrez.read(resultado_busca)
-        resultado_busca.close()
+        dados_gene = Entrez.read(busca_gene)
+        busca_gene.close()
 
-        ids = dados_busca["IdList"]
-
-        if not ids:
+        ids_gene = dados_gene["IdList"]
+        if not ids_gene:
             return []
+
+        gene_id = ids_gene[0]
 
         time.sleep(0.4)
 
-        resultado_resumo = Entrez.esummary(db="pubmed", id=",".join(ids))
+        link_resultado = Entrez.elink(dbfrom="gene", db="pubmed", id=gene_id)
+        link_dados = Entrez.read(link_resultado)
+        link_resultado.close()
+
+        if not link_dados[0]["LinkSetDb"]:
+            return []
+
+        pmids = [link["Id"] for link in link_dados[0]["LinkSetDb"][0]["Link"]]
+
+        if not pmids:
+            return []
+
+        pmids_para_buscar = pmids[:50]
+
+        time.sleep(0.4)
+
+        resultado_resumo = Entrez.esummary(db="pubmed", id=",".join(pmids_para_buscar))
         resumos = Entrez.read(resultado_resumo)
         resultado_resumo.close()
 
         artigos = []
         for resumo in resumos:
             pmid = str(resumo.get("Id", ""))
+            data_publicacao = resumo.get("PubDate", "")
+
+            match_ano = re.search(r"\d{4}", data_publicacao)
+            ano = int(match_ano.group()) if match_ano else 0
+
             artigos.append({
                 "titulo": resumo.get("Title", ""),
                 "revista": resumo.get("FullJournalName", ""),
-                "data_publicacao": resumo.get("PubDate", ""),
-                "link": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+                "data_publicacao": data_publicacao,
+                "link": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+                "ano": ano
             })
 
-        return artigos
+        artigos.sort(key=lambda a: a["ano"], reverse=True)
+
+        for artigo in artigos:
+            del artigo["ano"]
+
+        return artigos[:quantidade]
 
     except Exception:
         return []

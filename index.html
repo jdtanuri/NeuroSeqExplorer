@@ -22,14 +22,35 @@
 
         * { box-sizing: border-box; }
 
+        html {
+            background: var(--bg);
+        }
+
         body {
             font-family: var(--font-body);
-            background: var(--bg);
             color: var(--text);
             max-width: 720px;
             margin: 0 auto;
             padding: 56px 24px 80px;
             line-height: 1.5;
+            position: relative;
+            z-index: 0;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('cerebro-fundo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            opacity: 0.14;
+            z-index: -1;
         }
 
         h1 {
@@ -98,6 +119,7 @@
             padding: 10px 0 10px 14px;
             border-left: 3px solid var(--cor-item, var(--border));
             margin-bottom: 6px;
+            background: var(--surface);
         }
 
         .gene-btn {
@@ -244,6 +266,7 @@
             border-collapse: collapse;
             margin-top: 16px;
             font-size: 0.88rem;
+            background: var(--surface);
         }
 
         th {
@@ -263,33 +286,6 @@
         tr:hover td {
             background: var(--bg);
         }
-
-        .diagrama-nota {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 12px;
-        }
-
-        .legenda {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 14px;
-            font-size: 0.82rem;
-        }
-
-        .legenda span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .legenda .ponto {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            display: inline-block;
-        }
     </style>
 </head>
 <body>
@@ -307,49 +303,6 @@
 
     <section class="bloco">
         <div id="analise"></div>
-    </section>
-
-    <section class="bloco">
-        <h2>Vias anatômicas principais</h2>
-        <svg viewBox="0 0 420 280" style="width: 100%; max-width: 420px; display: block; margin: 0 auto;">
-            <path d="M60,90 C45,50 95,18 155,20 C225,22 285,12 335,48 C372,74 382,120 362,158 C348,186 305,196 268,216 C230,236 188,240 158,224 C120,206 96,182 74,154 C52,126 58,110 60,90 Z"
-                  fill="none" stroke="#C7CCD1" stroke-width="2"/>
-            <path d="M300,150 C320,170 316,210 292,224 C278,232 262,224 260,208 C258,190 280,160 300,150 Z"
-                  fill="none" stroke="#C7CCD1" stroke-width="2"/>
-            <path d="M268,205 C266,225 262,248 258,262" fill="none" stroke="#C7CCD1" stroke-width="2"/>
-
-            <path d="M255,190 Q195,155 145,125" fill="none" stroke="#C97A2C" stroke-width="2" opacity="0.85"/>
-            <path d="M255,190 Q170,95 100,58" fill="none" stroke="#C97A2C" stroke-width="2" opacity="0.85"/>
-            <path d="M262,182 Q210,145 165,108" fill="none" stroke="#C97A2C" stroke-width="2" opacity="0.55"/>
-
-            <path d="M266,200 Q200,120 100,60" fill="none" stroke="#2B7A78" stroke-width="1.5" opacity="0.6"/>
-            <path d="M266,200 Q180,150 130,130" fill="none" stroke="#2B7A78" stroke-width="1.5" opacity="0.6"/>
-            <path d="M266,200 Q230,90 170,55" fill="none" stroke="#2B7A78" stroke-width="1.5" opacity="0.6"/>
-
-            <path d="M272,188 Q200,100 110,65" fill="none" stroke="#C2571B" stroke-width="1.5" opacity="0.55"/>
-            <path d="M272,188 Q190,160 140,140" fill="none" stroke="#C2571B" stroke-width="1.5" opacity="0.55"/>
-
-            <path d="M115,148 Q100,105 92,68" fill="none" stroke="#3D7A45" stroke-width="2" opacity="0.85"/>
-            <path d="M115,148 Q140,125 165,115" fill="none" stroke="#3D7A45" stroke-width="2" opacity="0.85"/>
-
-            <circle cx="255" cy="190" r="4" fill="#C97A2C"/>
-            <circle cx="262" cy="182" r="4" fill="#C97A2C"/>
-            <circle cx="266" cy="200" r="4" fill="#2B7A78"/>
-            <circle cx="272" cy="188" r="4" fill="#C2571B"/>
-            <circle cx="115" cy="148" r="4" fill="#3D7A45"/>
-            <circle cx="145" cy="125" r="3" fill="#6B7280"/>
-            <circle cx="100" cy="58" r="3" fill="#6B7280"/>
-            <circle cx="165" cy="108" r="3" fill="#6B7280"/>
-        </svg>
-
-        <div class="legenda">
-            <span><span class="ponto" style="background:#C97A2C"></span>Dopamina — VTA/substância negra → estriado, accumbens, córtex pré-frontal</span>
-            <span><span class="ponto" style="background:#2B7A78"></span>Serotonina — núcleos da rafe → projeções amplas</span>
-            <span><span class="ponto" style="background:#C2571B"></span>Noradrenalina — locus coeruleus → projeções amplas</span>
-            <span><span class="ponto" style="background:#3D7A45"></span>Acetilcolina — prosencéfalo basal → córtex e hipocampo</span>
-        </div>
-
-        <p class="diagrama-nota">Diagrama esquemático, não anatômico. GABA, glutamato, histamina, glicina e opioides atuam de forma difusa pelo sistema nervoso central, sem uma via de origem-destino única como as monoaminas acima — por isso não aparecem no diagrama.</p>
     </section>
 
     <section class="bloco">
