@@ -1,6 +1,8 @@
+from pathlib import Path
+
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from fastapi.middleware.cors import CORSMiddleware
 
 from app.services import (
     analisar_sequencia,
@@ -17,12 +19,6 @@ from app.services import (
 )
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 inicializar_banco()
 
@@ -30,11 +26,6 @@ inicializar_banco()
 class Sequencia(BaseModel):
     nome: str
     sequencia: str = Field(..., min_length=1)
-
-
-@app.get("/")
-def home():
-    return {"message": "Olá, mundo!"}
 
 
 @app.get("/ola/{nome}")
@@ -135,3 +126,7 @@ def comparar_genes(gene1: str, gene2: str):
     )
 
     return resultado
+
+
+PASTA_PUBLIC = Path(__file__).parent.parent / "public"
+app.mount("/", StaticFiles(directory=PASTA_PUBLIC, html=True), name="static")

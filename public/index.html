@@ -359,12 +359,13 @@
             document.querySelectorAll(".chip").forEach(c => c.classList.remove("ativo"));
             document.getElementById("chip-" + neurotransmissor).classList.add("ativo");
 
-            const resposta = await fetch("http://127.0.0.1:8000/genes");
+            const resposta = await fetch("/genes");
             const dados = await resposta.json();
             const genes = dados[neurotransmissor];
             const cor = CORES[neurotransmissor];
 
-            let html = "<ul class=\"lista-genes\">";
+            let html = "<p style=\"color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 4px;\">Clique em um gene para ver a análise completa.</p>";
+            html += "<ul class=\"lista-genes\">";
             for (const gene of genes) {
                 html += `<li style="--cor-item: ${cor}"><button class="gene-btn" onclick="analisarGene('${gene.gene}', '${cor}')">${gene.gene}</button><span class="gene-nome">${gene.nome_completo}</span></li>`;
             }
@@ -377,7 +378,7 @@
             const corPainel = cor || "#2D5F4C";
             document.getElementById("analise").innerHTML = `<p style="color: var(--text-secondary)">Buscando e analisando ${nomeGene}...</p>`;
 
-            const resposta = await fetch("http://127.0.0.1:8000/buscar-gene/" + nomeGene);
+            const resposta = await fetch("/buscar-gene/" + nomeGene);
             const dados = await resposta.json();
 
             let html = `<div class="painel" style="--cor-painel: ${corPainel}">`;
@@ -407,7 +408,7 @@
         }
 
         async function popularSeletores() {
-            const resposta = await fetch("http://127.0.0.1:8000/genes");
+            const resposta = await fetch("/genes");
             const dados = await resposta.json();
 
             const todosGenes = [];
@@ -437,7 +438,7 @@
 
             document.getElementById("comparacao").innerHTML = `<p style="color: var(--text-secondary)">Comparando ${gene1} e ${gene2}...</p>`;
 
-            const resposta = await fetch("http://127.0.0.1:8000/comparar-genes/" + gene1 + "/" + gene2);
+            const resposta = await fetch("/comparar-genes/" + gene1 + "/" + gene2);
             const dados = await resposta.json();
 
             let html = `<div class="painel">`;
@@ -457,7 +458,7 @@
         async function mostrarHistorico() {
             document.getElementById("historico").innerHTML = `<p style="color: var(--text-secondary)">Carregando histórico...</p>`;
 
-            const resposta = await fetch("http://127.0.0.1:8000/historico");
+            const resposta = await fetch("/historico");
             const dados = await resposta.json();
 
             if (dados.length === 0) {
